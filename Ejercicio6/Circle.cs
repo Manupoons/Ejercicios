@@ -1,19 +1,17 @@
 ﻿namespace Ejercicio6;
 
-public class Circle
+public class Circle : Shape
 {
     private double Radius;
-    private double Area;
+    
 
     public Circle(double radius)
     {
         Radius = radius;
     }
 
-    public void AreaCircle(Circle circle)
+    public override double CalculateArea()
     {
-        Area = Math.PI * (Math.Pow(circle.Radius, 2));
+        return Math.PI * Math.Pow(Radius, 2);
     }
-    
-    public override string ToString() => $"El area del circulo es: {Area}";
 }

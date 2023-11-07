@@ -1,16 +1,17 @@
-﻿public class Square
+﻿using Ejercicio6;
+
+public class Square : Shape
 {
-    private double Side;
-    private double Area;
+    private double Side { get; }
+    
 
     public Square(double side)
     {
         Side = side;
     }
-    public void AreaSquare(Square square)
-    {
-        Area = 2*square.Side;
-    }
 
-    public override string ToString() => $"El area del cuadrado es: {Area}";
+    public override double CalculateArea()
+    {
+        return Side * Side;
+    }
 }

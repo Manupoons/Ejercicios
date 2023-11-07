@@ -5,15 +5,13 @@ public class Execute
     public static void Main()
     {
         Square square = new Square(4);
-        square.AreaSquare(square);
-        Console.WriteLine($"{square}");
+        square.CalculateArea();
         
-        Rectangle rectangle = new Rectangle(4, 2);
-        rectangle.AreaRectangle(rectangle);
-        Console.WriteLine($"{rectangle}");
+        Rectangle rectangle = new Rectangle(4, 5);
+        rectangle.CalculateArea();
         
         Circle circle = new Circle(4);
-        circle.AreaCircle(circle);
-        Console.WriteLine($"{circle}");
+        circle.CalculateArea();
+        
     }
 }

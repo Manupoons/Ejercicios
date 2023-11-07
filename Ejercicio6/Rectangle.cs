@@ -1,21 +1,21 @@
 ﻿namespace Ejercicio6;
 
-public class Rectangle
+public class Rectangle: Shape
 {
-    private double Side1;
-    private double Side2;
-    private double Area;
-
-    public Rectangle(double side1, double side2)
-    {
-        Side1 = side1;
-        Side2 = side2;
-    }
+    private double Width { get; }
+    private double Length { get; }
     
-    public void AreaRectangle(Rectangle rectangle)
+
+    public Rectangle(double width, double length)
     {
-        Area = rectangle.Side1*rectangle.Side2;
+        Width = width;
+        Length = length;
     }
 
-    public override string ToString() => $"El area del rectangulo es: {Area}";
+    public override double CalculateArea()
+    {
+        return Length * Width;
+    }
+
+    
 }

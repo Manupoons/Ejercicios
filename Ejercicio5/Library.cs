@@ -1,51 +1,65 @@
-﻿namespace Ejercicio5;
+﻿using System.Collections;
+using System.Diagnostics;
 
-public class Library
+namespace Ejercicio5;
+
+public class Library: IEnumerable<Book>
 {
-    public List<Book> Books = new List<Book>();
+    // public Book[] books = new Book[10];
+    //
+    // public void AddBook(Book book)
+    // {
+    //     foreach (var value in books)
+    //     {
+    //         for (int i = 0; i < books.Length; i++)
+    //         {
+    //             if (value.Isbn != book.Isbn)
+    //             {
+    //                 books[i] = book;
+    //                 Console.WriteLine($"Libro añadido");
+    //             }
+    //         }
+    //     }
+    // }
+
+    
+    public List<Book> books = new List<Book>();
 
     public void AddBook(Book book)
     {
-        foreach (var value in Books)
-        {
-            if (value.Isbn != book.Isbn)
-            {
-                Books.Add(book);
-                Console.WriteLine($"Libro added");
-            }
-        }
+        if (books.Contains(book)) return;
+        books.Add(book);
     }
 
-    public void DeleteBook(string isbn)
+    public void DeleteBook(Book book)
     {
-        foreach (var value in Books)
-        {
-            if (value.Isbn == isbn)
-            {
-                Books.Remove(value);
-                Console.WriteLine($"Libro eliminado");
-            }
-        }
+        if (!books.Contains(book)) return;
+        books.Remove(book);
     }
 
-    public void CheckBook(DateTime year, string genre, string author)
+    public IEnumerable<Book> ByYear(int year)
     {
-        foreach (var value in Books)
-        {
-            if (value.Year == year && value.Genre == genre && value.Author == author)
-            {
-                Console.WriteLine($"El libro que ha consultado: ISBN - {value.Isbn}, Year - {value.Year}, Author - {value.Author}, Genre - {value.Genre}, Editorial - {value.Editorial}");
-            }            
-        }
+        return books.Where(b => b.Year == year);
+    }
+    
+    public IEnumerable<Book> ByGenre(string genre)
+    {
+        return books.Where(b => b.Genre == genre);
+    } 
+    
+    public IEnumerable<Book> ByAuthor(string author)
+    {
+        return books.Where(b => b.Author == author);
     }
 
-    public void ShowLibrary()
+
+    public IEnumerator<Book> GetEnumerator()
     {
-        Console.WriteLine("Biblioteca con los libros:");
-        foreach (var value in Books)
-        {
-            Console.WriteLine($"ISBN: {value.Isbn}, Año de publicación: {value.Year}, Género: {value.Genre}, Autor: {value.Author}, Editorial: {value.Editorial}");
-        }
+        return books.GetEnumerator();
     }
-    public override string ToString() => $"";
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
 }

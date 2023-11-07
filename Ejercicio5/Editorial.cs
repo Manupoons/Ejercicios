@@ -3,11 +3,13 @@
 public class Editorial
 {
     private string Name { get; }
-    private DateTime YearCreation { get; }
+    private int YearCreation { get; }
 
-    public Editorial(string name, DateTime yearCreation)
+    public Editorial(string name, int yearCreation)
     {
         Name = name;
         YearCreation = yearCreation;
     }
+    
+    public override string ToString() => $"Nombre: {Name}, Año creacion: {YearCreation}";
 }
